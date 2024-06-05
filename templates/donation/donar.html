@@ -1,0 +1,56 @@
+{% extends 'donation/layouts/main.html' %}
+
+{% block title %}
+    donar
+{% endblock title %} 
+
+{% block content %}
+
+<style>
+
+body {
+    background-image: url('static/images/organ.jpg'); /* Replace 'path_to_your_image.jpg' with the actual path to your image */
+    background-size:115%; /* Adjust the background image size */
+}
+    form {
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(244, 244, 244, 0.4); /* Adjust the opacity by modifying the fourth value (0.8 in this example) */
+    border-radius: 5px;
+
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"],
+form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+</style>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form>
+
+
+{% endblock content %}

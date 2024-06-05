@@ -1,0 +1,61 @@
+{% extends 'donation/layouts/main.html' %}
+
+{% block title %}
+    Admin
+{% endblock title %} 
+
+{% block content %}
+<style>
+    body {
+    background-image: url('static/images/organ-donation.jpg'); /* Replace 'path_to_your_image.jpg' with the actual path to your image */
+    background-size:115%; /* Adjust the background image size */
+}
+    /* Custom CSS for card layout */
+    .card {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 15px;
+        margin-bottom: 20px;
+        background-color: #70d7f7;
+        box-shadow: 0 4px 8px rgba(249, 250, 249, 0.938);
+    }
+
+    .card-title {
+        font-size: 20px;
+        font-weight: bold;
+        color: #f0f5ea;
+        margin-bottom: 10px;
+    }
+
+    .card-text {
+        font-size: 16px;
+        color: #666;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+</style>
+
+<div class="container">
+    <h1 class="mt-4 mb-4">Donar</h1>
+    <div class="row">
+        {% for donor in donors %}
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ donor.name }}</h5>
+                        <p class="card-text">Age: {{ donor.age }}</p>
+                        <p class="card-text">Gender: {{ donor.get_sex_display }}</p>
+                        <p class="card-text">Blood Group: {{ donor.blood_group }}</p>
+                        <p class="card-text">Mobile Number: {{ donor.mobile_number }}</p>
+                        <p class="card-text">Email: {{ donor.email }}</p>
+                        <p class="card-text">Diseases: {{ donor.diseases }}</p>
+                        <p class="card-text">Donor Organ: {{ donor.donor_organ }}</p>
+                        <p class="card-text">Description: {{ donor.description }}</p>
+                        <p class="card-text">Created At: {{ donor.created_at }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
